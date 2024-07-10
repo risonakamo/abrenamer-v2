@@ -2,7 +2,7 @@ import {BrowserWindow,app} from "electron";
 
 function main()
 {
-    app.whenReady().then(()=>{
+    app.on("ready",()=>{
         const window=new BrowserWindow({
             width:1520,
             height:890,
