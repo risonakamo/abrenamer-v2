@@ -1,0 +1,22 @@
+{
+    "compilerOptions":{
+        "strict":true,
+        "outDir":"build",
+        "target":"ESNext",
+        "lib":["ESNext","DOM"],
+        "module":"commonjs",
+        "esModuleInterop":true,
+        "baseUrl":".",
+        "paths":{
+
+        }
+    },
+    "include":[
+        "**/*.d.ts",
+        "app/*.ts",
+        "lib/*.ts"
+    ],
+    "exclude":[
+        "node_modules"
+    ]
+}

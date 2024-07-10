@@ -1,0 +1,3 @@
+[submodule "abrenamer-v2-web"]
+	path = abrenamer-v2-web
+	url = https://github.com/risonakamo/abrenamer-v2-web.git
