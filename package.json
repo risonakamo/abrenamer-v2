@@ -2,13 +2,18 @@
   "name": "abrenamer-v2",
   "version": "0.1.0",
   "scripts": {
-    "build":"tsc",
-    "run-app":"electron .",
-    "dev":"pnpm build && pnpm run-app"
+    "build": "tsc",
+    "run-app": "electron .",
+    "dev": "pnpm build && pnpm run-app"
   },
   "main": "./build/main.js",
   "dependencies": {
+    "@types/lodash": "^4.17.6",
     "electron": "^31.2.0",
+    "fs-extra": "^11.2.0",
+    "lodash": "^4.17.21",
+    "natural-compare": "^1.4.0",
+    "tmp": "^0.2.3",
     "typescript": "^5.5.3"
   }
 }
