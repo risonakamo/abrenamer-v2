@@ -10,7 +10,7 @@ function main()
             minHeight:500,
         });
 
-        window.loadFile("abrenamer-v2-web/build/index.html");
+        window.loadFile("abrenamer-v2-web/build/reorder-page.html");
     });
 }
 
