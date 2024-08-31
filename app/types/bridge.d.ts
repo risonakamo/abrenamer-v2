@@ -4,5 +4,5 @@
 interface Bridge
 {
     setItemsData(items:ItemsData):void
-    getitemsData():Promise<ItemsData>
+    getItemsData():Promise<ItemsData>
 }

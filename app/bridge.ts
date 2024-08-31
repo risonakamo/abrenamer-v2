@@ -8,7 +8,7 @@ const bridge:Bridge={
         ipcRenderer.invoke("set-items-data",items);
     },
 
-    getitemsData():Promise<ItemsData>
+    getItemsData():Promise<ItemsData>
     {
         return ipcRenderer.invoke("get-items-data");
     }
