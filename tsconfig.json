@@ -12,11 +12,12 @@
         }
     },
     "include":[
-        "**/*.d.ts",
-        "app/*.ts",
-        "lib/*.ts"
+        "app/**/*.d.ts",
+        "app/**/*.ts",
+        "app/**/*.ts"
     ],
     "exclude":[
-        "node_modules"
+        "node_modules",
+        "abrenamer-v2-web",
     ]
 }
