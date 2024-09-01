@@ -1,6 +1,8 @@
 // renamer lib funcs
 
-import {basename} from "path";
+import Handlebars,{create} from "handlebars";
+import {basename,extname} from "path";
+import _ from "lodash";
 
 function renameGroupedItems(
     items:GroupedPaths,
@@ -13,12 +15,75 @@ function renameGroupedItems(
 
 }
 
-/** applies rename rule to the base of a path, producing a new basename. if give a path that
- *  is not a basename, will take the base name only. */
+/** apply rename rule to list of file paths. only the basename is considered and produced, the
+ *  rest of the filepath (before the basename) is not used. refer to rename rule system doc
+ *  for how rename rule works */
 function applyRenameRule(
-    filepath:string,
+    filepaths:string[],
     renameRule:string,
-):string
+):string[]
 {
-    filepath=basename(filepath);
+    const renamerTemplate:HandlebarsTemplateDelegate<{}>=createRenamerEnv(renameRule);
+
+    return _.map(filepaths,(filepath:string):string=>{
+        const extension:string=extname(filepath);
+
+        return `${renamerTemplate({})}${extension}`;
+    });
+}
+
+/** creates handlebars template to perform renaming using given rename rule. refer to rename
+ *  rule document for rename rule usage */
+function createRenamerEnv(renamerRule:string):HandlebarsTemplateDelegate<{}>
+{
+    const handleBarsEnv:typeof Handlebars=create();
+
+    var firstIncCall:boolean=true;
+    var incCounter:number=0;
+
+    handleBarsEnv.registerHelper("inc",(startPos:number|Object):number=>{
+        var startPos2:number=1;
+
+        if (_.isNumber(startPos))
+        {
+            startPos2=startPos;
+        }
+
+        if (firstIncCall)
+        {
+            incCounter=startPos2-1;
+        }
+
+        firstIncCall=false;
+
+        incCounter++;
+        return incCounter;
+    });
+
+    return handleBarsEnv.compile(renamerRule);
+}
+
+export function test_applyRenameRule():void
+{
+    const paths:string[]=[
+        "a.png",
+        "asdas.jpg",
+        "huh",
+        "something.txt",
+        "something.jpg",
+    ];
+
+    var output:string[]=applyRenameRule(
+        paths,
+        "{{inc 1}}",
+    );
+
+    console.log(output);
+
+    var output=applyRenameRule(
+        paths,
+        "{{inc 12}}",
+    );
+
+    console.log(output);
 }

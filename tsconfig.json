@@ -8,13 +8,13 @@
         "esModuleInterop":true,
         "baseUrl":".",
         "paths":{
-
+            "@/*":["app/*"]
         }
     },
     "include":[
         "app/**/*.d.ts",
         "app/**/*.ts",
-        "app/**/*.ts"
+        "tests/**/*.ts",
     ],
     "exclude":[
         "node_modules",

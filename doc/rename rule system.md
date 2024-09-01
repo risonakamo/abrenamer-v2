@@ -19,6 +19,9 @@ Example: `{{inc 1}}`, `{{inc 5}}`
 
 Defaults to 1 if `startPos` not provided.
 
+!!! caution "Note"
+    Currently does not support multiple `incs` in one rename rule. Each `inc` will increment within the same rule twice and be 2 separate numbers.
+
 ## Random Hash
 ```
 {{random <length:int>}}
