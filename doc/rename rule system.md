@@ -24,12 +24,17 @@ Defaults to 1 if `startPos` not provided.
 
 ## Random Hash
 ```
-{{random <length:int>}}
+{{random}}
 ```
 
-Inserts random hash string with the specified length.
+Inserts random hash string. Each use in the same rule will be a different hash.
 
-Defaults to size 6 if not specified.
+## Filename
+```
+{{filename}}
+```
+
+Inserts original filename.
 
 ## Not Yet Implemented
 ### Extension

@@ -3,6 +3,7 @@
 import Handlebars,{create} from "handlebars";
 import {basename,extname} from "path";
 import _ from "lodash";
+import {v4 as uuid4} from "uuid";
 
 function renameGroupedItems(
     items:GroupedPaths,
@@ -41,6 +42,9 @@ function createRenamerEnv(renamerRule:string):HandlebarsTemplateDelegate<{}>
     var firstIncCall:boolean=true;
     var incCounter:number=0;
 
+    // inserts a number that increases each time this func is used
+    // can use startPos to set the 1st number, but does nothing
+    // after the 1st number.
     handleBarsEnv.registerHelper("inc",(startPos:number|Object):number=>{
         var startPos2:number=1;
 
@@ -58,6 +62,16 @@ function createRenamerEnv(renamerRule:string):HandlebarsTemplateDelegate<{}>
 
         incCounter++;
         return incCounter;
+    });
+
+    // inserts random hash
+    handleBarsEnv.registerHelper("random",():string=>{
+        return uuid4().slice(0,7);
+    });
+
+    // inserts original filename
+    handleBarsEnv.registerHelper("filename",():string=>{
+
     });
 
     return handleBarsEnv.compile(renamerRule);
@@ -82,7 +96,7 @@ export function test_applyRenameRule():void
 
     var output=applyRenameRule(
         paths,
-        "{{inc 12}}",
+        "{{inc 12}}-{{random}}",
     );
 
     console.log(output);

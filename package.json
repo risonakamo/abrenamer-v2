@@ -5,12 +5,13 @@
     "build": "tsc",
     "run-app": "electron .",
     "dev": "pnpm build && pnpm run-app",
-    "test":"vitest run"
+    "test": "vitest run"
   },
   "main": "./build/main.js",
   "dependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/lodash": "^4.17.6",
+    "@types/uuid": "^10.0.0",
     "electron": "^31.2.0",
     "fs-extra": "^11.2.0",
     "handlebars": "^4.7.8",
@@ -18,6 +19,7 @@
     "natural-compare": "^1.4.0",
     "tmp": "^0.2.3",
     "typescript": "^5.5.3",
+    "uuid": "^10.0.0",
     "vitest": "^2.0.5"
   }
 }
