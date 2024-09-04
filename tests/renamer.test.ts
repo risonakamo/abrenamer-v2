@@ -3,6 +3,13 @@ import {test} from "vitest";
 import {RenamerHandlebars} from "@/lib//RenamerHandlebars";
 import {renameGroupedItems} from "@/lib/renamer";
 
+interface RenameGroupedItemsTest
+{
+    items:string[][]
+    groupRule:string
+    itemRule:string
+}
+
 test("using RenamerHandlebars class",()=>{
     const paths:string[]=[
         "a.png",
@@ -39,12 +46,12 @@ test("using RenamerHandlebars class",()=>{
 test.only("main rename grouped items func",()=>{
     const paths:string[][]=[
         [
-            "C:/Users/ktkm/Pictures/day road and bridge.png",
-            "C:/Users/ktkm/Pictures/mall.jpg",
+            "C:/Users/ngokn1/Desktop/rename-test/src/lamproad.jpg",
+            "C:/Users/ngokn1/Desktop/rename-test/src/as",
         ],
         [
-            "C:/Users/ktkm/Desktop/thing",
-            "C:/Users/ktkm/Desktop/somewhere/something.txt",
+            "C:/Users/ngokn1/Desktop/rename-test/src/maldr.jpg",
+            "C:/Users/ngokn1/Desktop/rename-test/src/mall.jpg",
         ]
     ];
 
@@ -55,7 +62,7 @@ test.only("main rename grouped items func",()=>{
         paths,
         groupRule,
         itemRule,
-        "C:/Users/ktkm/Desktop/thing/out",
-        "move",
+        "C:/Users/ngokn1/Desktop/rename-test/output",
+        "copy",
     );
 });

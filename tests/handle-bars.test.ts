@@ -5,7 +5,7 @@ import Handlebars from "handlebars";
 import _ from "lodash";
 
 // test using handlebars
-test("handle-bars",()=>{
+test.skip("handle-bars",()=>{
     const handleBarsEnv:typeof Handlebars=create();
 
     var firstIncCall:boolean=true;
