@@ -11,6 +11,11 @@ const bridge:Bridge={
     getItemsData():Promise<ItemsData>
     {
         return ipcRenderer.invoke("get-items-data");
+    },
+
+    getDefaultOutputDir():Promise<string>
+    {
+        return ipcRenderer.invoke("get-default-output-dir");
     }
 };
 

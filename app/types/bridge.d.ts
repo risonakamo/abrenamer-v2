@@ -5,4 +5,5 @@ interface Bridge
 {
     setItemsData(items:ItemsData):void
     getItemsData():Promise<ItemsData>
+    getDefaultOutputDir():Promise<string>
 }

@@ -43,6 +43,6 @@ test("using RenamerHandlebars class",()=>{
     console.log(output);
 });
 
-test.only("main rename grouped items func",()=>{
+test("main rename grouped items func",()=>{
 
 });
