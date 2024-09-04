@@ -44,25 +44,5 @@ test("using RenamerHandlebars class",()=>{
 });
 
 test.only("main rename grouped items func",()=>{
-    const paths:string[][]=[
-        [
-            "C:/Users/ngokn1/Desktop/rename-test/src/lamproad.jpg",
-            "C:/Users/ngokn1/Desktop/rename-test/src/as",
-        ],
-        [
-            "C:/Users/ngokn1/Desktop/rename-test/src/maldr.jpg",
-            "C:/Users/ngokn1/Desktop/rename-test/src/mall.jpg",
-        ]
-    ];
 
-    var groupRule:string="{{inc}}";
-    var itemRule:string="{{inc}}";
-
-    renameGroupedItems(
-        paths,
-        groupRule,
-        itemRule,
-        "C:/Users/ngokn1/Desktop/rename-test/output",
-        "copy",
-    );
 });
