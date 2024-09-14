@@ -4,7 +4,8 @@
 
 # reorder page
 - [x] drag new items into new group zone
-- [ ] drag existing items into new group zone
+- [x] drag existing items into new group zone
+- [x] visual style while dropping into new group zone
 - [ ] remove items
 - [ ] preview items system
 - [ ] folder item icon
