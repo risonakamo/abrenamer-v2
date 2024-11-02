@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tsc",
     "run-app": "electron .",
-    "dev": "pnpm build && pnpm run-app",
+    "d": "pnpm build && pnpm run-app",
     "test": "vitest run"
   },
   "main": "./build/main.js",
