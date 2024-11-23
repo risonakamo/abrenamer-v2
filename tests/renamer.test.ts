@@ -1,4 +1,5 @@
 import {test} from "vitest";
+import {removeSync} from "fs-extra";
 
 import {RenamerHandlebars} from "@/lib//RenamerHandlebars";
 import {renameGroupedItems} from "@/lib/renamer";
@@ -44,5 +45,23 @@ test("using RenamerHandlebars class",()=>{
 });
 
 test("main rename grouped items func",()=>{
+    removeSync("tests/test-items/dest");
 
+    const renameItems:GroupedPaths=[
+        [
+            "tests/test-items/orig/thing1.txt",
+            "tests/test-items/orig/inner-dir/thing3.txt"
+        ],
+        [
+            "tests/test-items/orig/thing2.txt",
+        ]
+    ];
+
+    renameGroupedItems(
+        renameItems,
+        "{{inc 1}}",
+        "{{inc 1}}",
+        "tests/test-items/dest",
+        "copy",
+    );
 });

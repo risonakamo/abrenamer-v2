@@ -14,7 +14,7 @@
     "include":[
         "app/**/*.d.ts",
         "app/**/*.ts",
-        "tests/**/*.ts",
+        // "tests/**/*.ts",
     ],
     "exclude":[
         "node_modules",

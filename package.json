@@ -2,7 +2,7 @@
   "name": "abrenamer-v2",
   "version": "0.1.0",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --project tsconfig-build.json",
     "run-app": "electron .",
     "d": "pnpm build && pnpm run-app",
     "test": "vitest run"
