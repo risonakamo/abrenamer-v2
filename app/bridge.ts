@@ -16,7 +16,12 @@ const bridge:Bridge={
     getDefaultOutputDir():Promise<string>
     {
         return ipcRenderer.invoke("get-default-output-dir");
-    }
+    },
+
+    doRename(renameRequest:RenameRequest):void
+    {
+        ipcRenderer.invoke("do-rename",renameRequest);
+    },
 };
 
 contextBridge.exposeInMainWorld("electron",bridge);

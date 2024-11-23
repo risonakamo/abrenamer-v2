@@ -3,6 +3,8 @@ import {join} from "path";
 import {homedir} from "os";
 import normalise from "normalize-path";
 
+import {renameGroupedItems} from "@/lib/renamer";
+
 function main()
 {
     app.on("ready",()=>{
@@ -44,6 +46,17 @@ function main()
     /** get the desktop dir as the default output dir */
     ipcMain.handle("get-default-output-dir",():string=>{
         return normalise(join(homedir(),"Desktop"));
+    });
+
+    /** execute rename request */
+    ipcMain.handle("do-rename",(e:IpcMainInvokeEvent,request:RenameRequest):void=>{
+        renameGroupedItems(
+            request.items,
+            request.groupRenameRule,
+            request.itemRenameRule,
+            request.outputDir,
+            request.renameMode,
+        );
     });
 }
 
