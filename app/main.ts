@@ -6,6 +6,7 @@ import _ from "lodash";
 
 import {renameGroupedItems} from "./lib/renamer";
 import {flattenGroupedPaths} from "./lib/file-group";
+import {formatDate} from "./lib/utils";
 
 function main()
 {
@@ -69,7 +70,7 @@ function main()
 
             return {
                 status:"error",
-                description:"error occurred: "+e,
+                description:formatDate(new Date())+": "+_.toString(e),
             };
         }
 
@@ -80,9 +81,10 @@ function main()
             operatorVerb="moved";
         }
 
+        const dateText:string=formatDate(new Date());
         return {
             status:"success",
-            description:`successfully ${operatorVerb} ${flattenGroupedPaths(request.items).length}`,
+            description:`${dateText}: successfully ${operatorVerb} ${flattenGroupedPaths(request.items).length} items`,
         };
     });
 }
