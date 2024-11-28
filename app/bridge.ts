@@ -18,9 +18,9 @@ const bridge:Bridge={
         return ipcRenderer.invoke("get-default-output-dir");
     },
 
-    doRename(renameRequest:RenameRequest):void
+    doRename(renameRequest:RenameRequest):Promise<RenameRequestStatus>
     {
-        ipcRenderer.invoke("do-rename",renameRequest);
+        return ipcRenderer.invoke("do-rename",renameRequest);
     },
 };
 

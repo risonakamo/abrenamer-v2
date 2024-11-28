@@ -9,3 +9,10 @@ interface RenameRequest
     outputDir:string
     renameMode:RenameMode
 }
+
+/** result of rename request operation */
+interface RenameRequestStatus
+{
+    status:"success"|"error"
+    description:string
+}

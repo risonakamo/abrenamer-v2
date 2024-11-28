@@ -103,7 +103,7 @@ function multiMove(items1:string[],items2:string[],copy:boolean):void
     if (items1.length!=items2.length)
     {
         console.error("length error, src/dest arrays were not same size");
-        throw "size error";
+        throw "multimove: size error";
     }
 
     // check all src items exist
@@ -121,7 +121,7 @@ function multiMove(items1:string[],items2:string[],copy:boolean):void
     if (!items1Exists)
     {
         console.error("a target item did not exist to be moved/copied");
-        throw "not exist";
+        throw "multimove: not exist";
     }
 
     // check if any destination item would be overwritten
@@ -139,7 +139,7 @@ function multiMove(items1:string[],items2:string[],copy:boolean):void
     if (item2Exists)
     {
         console.error("refusing to move/copy, a destination item already exists");
-        throw "already exists";
+        throw "multimove: already exists";
     }
 
     var movingVerb:string="moving:";

@@ -2,8 +2,10 @@ import {BrowserWindow,IpcMainEvent,IpcMainInvokeEvent,app, ipcMain} from "electr
 import {join} from "path";
 import {homedir} from "os";
 import normalise from "normalize-path";
+import _ from "lodash";
 
 import {renameGroupedItems} from "./lib/renamer";
+import {flattenGroupedPaths} from "./lib/file-group";
 
 function main()
 {
@@ -49,14 +51,39 @@ function main()
     });
 
     /** execute rename request */
-    ipcMain.handle("do-rename",(e:IpcMainInvokeEvent,request:RenameRequest):void=>{
-        renameGroupedItems(
-            request.items,
-            request.groupRenameRule,
-            request.itemRenameRule,
-            request.outputDir,
-            request.renameMode,
-        );
+    ipcMain.handle("do-rename",(e:IpcMainInvokeEvent,request:RenameRequest):RenameRequestStatus=>{
+        try
+        {
+            renameGroupedItems(
+                request.items,
+                request.groupRenameRule,
+                request.itemRenameRule,
+                request.outputDir,
+                request.renameMode,
+            );
+        }
+
+        catch (e)
+        {
+            console.error(e);
+
+            return {
+                status:"error",
+                description:"error occurred: "+e,
+            };
+        }
+
+        var operatorVerb:string="copied";
+
+        if (request.renameMode=="move")
+        {
+            operatorVerb="moved";
+        }
+
+        return {
+            status:"success",
+            description:`successfully ${operatorVerb} ${flattenGroupedPaths(request.items).length}`,
+        };
     });
 }
 
