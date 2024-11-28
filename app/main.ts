@@ -3,7 +3,7 @@ import {join} from "path";
 import {homedir} from "os";
 import normalise from "normalize-path";
 
-import {renameGroupedItems} from "@/lib/renamer";
+import {renameGroupedItems} from "./lib/renamer";
 
 function main()
 {

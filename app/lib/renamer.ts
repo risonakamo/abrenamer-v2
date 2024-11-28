@@ -4,7 +4,7 @@ import _ from "lodash";
 import {join, normalize, dirname} from "path";
 import {copySync, ensureDirSync, existsSync, removeSync} from "fs-extra";
 
-import {RenamerHandlebars} from "@/lib/RenamerHandlebars";
+import {RenamerHandlebars} from "./RenamerHandlebars";
 
 /** main high level renamer func.
  *  renames grouped items using the group rule for groups and item rule for items. */
