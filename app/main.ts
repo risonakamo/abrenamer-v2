@@ -46,13 +46,22 @@ function main()
         return currentItemsData;
     });
 
+    /** fully reset the items data */
+    ipcMain.handle("clear-items-data",():void=>{
+        currentItemsData={
+            fileItemsData:{},
+            fileGroups:[],
+        };
+    });
+
     /** get the desktop dir as the default output dir */
     ipcMain.handle("get-default-output-dir",():string=>{
         return normalise(join(homedir(),"Desktop"));
     });
 
     /** execute rename request */
-    ipcMain.handle("do-rename",(e:IpcMainInvokeEvent,request:RenameRequest):RenameRequestStatus=>{
+    ipcMain.handle("do-rename",
+    (e:IpcMainInvokeEvent,request:RenameRequest):RenameRequestStatus=>{
         try
         {
             renameGroupedItems(
