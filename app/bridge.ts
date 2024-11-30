@@ -27,6 +27,11 @@ const bridge:Bridge={
     {
         return ipcRenderer.invoke("do-rename",renameRequest);
     },
+
+    openExplorer(path:string):void
+    {
+        ipcRenderer.invoke("open-explorer",path);
+    }
 };
 
 contextBridge.exposeInMainWorld("electron",bridge);

@@ -8,4 +8,5 @@ interface Bridge
     clearItemsData():void
     getDefaultOutputDir():Promise<string>
     doRename(renameRequest:RenameRequest):Promise<RenameRequestStatus>
+    openExplorer(path:string):void
 }

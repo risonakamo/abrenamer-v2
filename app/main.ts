@@ -1,12 +1,12 @@
-import {BrowserWindow,IpcMainEvent,IpcMainInvokeEvent,app, ipcMain} from "electron";
-import {join} from "path";
+import {BrowserWindow,IpcMainInvokeEvent,app, ipcMain} from "electron";
+import {join,normalize} from "path";
 import {homedir} from "os";
 import normalise from "normalize-path";
 import _ from "lodash";
 
 import {renameGroupedItems} from "./lib/renamer";
 import {flattenGroupedPaths} from "./lib/file-group";
-import {formatDate} from "./lib/utils";
+import {formatDate,openFileExplorer} from "./lib/utils";
 
 function main()
 {
@@ -54,9 +54,9 @@ function main()
         };
     });
 
-    /** get the desktop dir as the default output dir */
+    /** get the desktop/out dir as the default output dir */
     ipcMain.handle("get-default-output-dir",():string=>{
-        return normalise(join(homedir(),"Desktop"));
+        return normalise(join(homedir(),"Desktop","out"));
     });
 
     /** execute rename request */
@@ -95,6 +95,12 @@ function main()
             status:"success",
             description:`${dateText}: successfully ${operatorVerb} ${flattenGroupedPaths(request.items).length} items`,
         };
+    });
+
+    /** request to open file explorer to some path */
+    ipcMain.handle("open-explorer",(e:IpcMainInvokeEvent,folder:string):void=>{
+        console.log("opening explorer:",normalize(folder));
+        openFileExplorer(folder);
     });
 }
 
