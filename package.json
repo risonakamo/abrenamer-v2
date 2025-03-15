@@ -4,8 +4,8 @@
   "description": "Album Renamer v2",
   "author": "risonakamo",
   "scripts": {
-    "build": "tsc --project tsconfig-build.json",
-    "run-app": "electron .",
+    "b": "tsc --project tsconfig-build.json",
+    "r": "electron .",
     "d": "pnpm build && pnpm run-app",
     "test": "vitest run"
   },

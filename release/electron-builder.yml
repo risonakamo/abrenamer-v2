@@ -1,8 +1,13 @@
 appId: abrenamer2
+productName: abrenamer2
+artifactName: out.zip
+
+win:
+  target: zip
 
 files:
   - build/**/*
   - abrenamer-v2-web/build/**/*
 
-win:
-  target: zip
+extraFiles:
+  - version.md

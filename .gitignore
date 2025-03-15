@@ -4,3 +4,4 @@ ref
 tests/test-items/dest
 dist
 release/electron-builder-cache
+release/output
