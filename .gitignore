@@ -5,3 +5,4 @@ tests/test-items/dest
 dist
 release/electron-builder-cache
 release/output
+abrenamer2-release
