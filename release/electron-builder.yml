@@ -1,0 +1,8 @@
+appId: abrenamer2
+
+files:
+  - build/**/*
+  - abrenamer-v2-web/build/**/*
+
+win:
+  target: zip

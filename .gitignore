@@ -2,3 +2,5 @@ build
 node_modules
 ref
 tests/test-items/dest
+dist
+release/electron-builder-cache
