@@ -6,7 +6,7 @@
   "scripts": {
     "b": "tsc --project tsconfig-build.json",
     "r": "electron .",
-    "d": "pnpm build && pnpm run-app",
+    "d": "pnpm b && pnpm r",
     "test": "vitest run"
   },
   "main": "./build/main.js",

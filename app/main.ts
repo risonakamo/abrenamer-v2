@@ -1,4 +1,4 @@
-import {BrowserWindow,IpcMainInvokeEvent,app, ipcMain} from "electron";
+import {BrowserWindow,IpcMainInvokeEvent,app,ipcMain,screen} from "electron";
 import {join,normalize} from "path";
 import {homedir} from "os";
 import normalise from "normalize-path";
@@ -11,11 +11,13 @@ import {formatDate,openFileExplorer} from "./lib/utils";
 function main()
 {
     app.on("ready",()=>{
+        const display:Electron.Size=screen.getPrimaryDisplay().workAreaSize;
+
         const window=new BrowserWindow({
-            width:1520,
-            height:890,
-            minWidth:650,
-            minHeight:500,
+            width:Math.round(display.width*.78),
+            height:Math.round(display.height*.85),
+            minWidth:900,
+            minHeight:620,
             webPreferences:{
                 preload:join(__dirname,"bridge.js"),
             }
