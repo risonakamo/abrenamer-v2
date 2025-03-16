@@ -3,7 +3,7 @@ HERE=$(dirname $(realpath $BASH_SOURCE))
 cd $HERE
 
 # --- config
-releaseName="abrenamer2_1.0.0-beta"
+releaseName="abrenamer2_1.0.1-beta"
 # ---
 
 outputDir="$HERE/output"
